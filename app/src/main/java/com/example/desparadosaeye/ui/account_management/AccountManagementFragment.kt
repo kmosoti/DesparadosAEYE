@@ -1,4 +1,4 @@
-package com.example.desparadosaeye.ui.gallery
+package com.example.desparadosaeye.ui.account_management
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.desparadosaeye.R
 
-class GalleryFragment : Fragment() {
+class AccountManagementFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var accountManagementViewModel: AccountManagementViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-                ViewModelProvider(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
+        accountManagementViewModel =
+                ViewModelProvider(this).get(AccountManagementViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_account_management, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(viewLifecycleOwner, Observer {
+        accountManagementViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
