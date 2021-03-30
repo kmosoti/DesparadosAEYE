@@ -1,10 +1,10 @@
-# DesparadosAEYE
-A repository for Desparado's AI application
+# DesparadosAEye
 
-Kennedy Test Push
-
-
-Jacob Test Push
-Chance Wuz Here 2 Pull your project
-Adam test push
-Payton test push
+<h2> Team Members </h2>
+<ul>
+  <li> Huddleston, Chance
+  <li> Khalaf, Adam
+  <li> Mosoti, Kennedy
+  <li> Parrish, Payton
+  <li> Valdez, Jacob
+</ul>
