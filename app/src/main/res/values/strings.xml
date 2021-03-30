@@ -1,4 +1,5 @@
 <resources>
+    <!--General Strings-->
     <string name="app_name">DesperadoAEYE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,7 +8,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Main Pages Strings-->
     <string name="menu_conversation">Conversation</string>
     <string name="menu_account_management">Account Management</string>
     <string name="menu_settings">Settings</string>
+
+    <!--Logon Strings-->
+    <string name="prompt_password">Enter Password&#8230;</string>
+    <string name="prompt_email">Enter Email&#8230;</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="action_sign_in">Sign In</string>
 </resources>
