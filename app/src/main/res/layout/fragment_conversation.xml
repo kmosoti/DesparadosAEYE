@@ -7,7 +7,7 @@
     tools:context=".ui.conversation.ConversationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/statements_recycler"
+        android:id="@+id/statements_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@id/chat_bar"
