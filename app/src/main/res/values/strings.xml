@@ -16,10 +16,13 @@
     <string name="copy">copy</string>
     <string name="delete">delete</string>
     <string name="send">send</string>
+    <string name="message_copied">message copied</string>
+    <string name="message_deleted">message deleted</string>
 
     <!--Logon Strings-->
     <string name="prompt_password">Enter Password&#8230;</string>
     <string name="prompt_email">Enter Email&#8230;</string>
     <string name="action_sign_in_short">Sign In</string>
     <string name="action_sign_in">Sign In</string>
+    <string name="clipboard_label_message_content">message content</string>
 </resources>

@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="user_statement_light">#673AB7</color>
-    <color name="ai_statement_light">#8F8F8F</color>
+    <color name="ai_statement_light">#474747</color>
     <color name="user_statement_dark">#03A9F4</color>
-    <color name="ai_statement_dark">#FF111111</color>
+    <color name="ai_statement_dark">#959595</color>
 </resources>
