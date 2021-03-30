@@ -2,12 +2,14 @@
     <string name="app_name">DesperadoAEYE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Desperado</string>
-    <string name="nav_header_subtitle">PushTest@randomemail.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="nav_header_title">DesperadosAEye</string>
+    <string name="nav_header_desc">DesparadosAEye</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_conversation">Conversation</string>
     <string name="menu_account_management">Account Management</string>
     <string name="menu_settings">Settings</string>
+    <string name="copy">copy</string>
+    <string name="delete">delete</string>
+    <string name="send">send</string>
 </resources>

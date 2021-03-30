@@ -22,10 +22,6 @@ class ConversationFragment : Fragment() {
         conversationViewModel =
                 ViewModelProvider(this).get(ConversationViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_conversation, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        conversationViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }
