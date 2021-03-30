@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorUserStatement" format="color"/>
+    <attr name="colorAIStatement" format="color"/>
+    <attr name="ic_user_submit_path" format="reference"/>
+</resources>

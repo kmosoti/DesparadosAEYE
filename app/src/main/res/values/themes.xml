@@ -12,6 +12,13 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <!-- User and AI statement baloon colors -->
+        <item name="colorUserStatement">@color/user_statement_light</item>
+        <item name="colorAIStatement">@color/ai_statement_light</item>
+
+        <!-- Lets icons work in light and dark mode -->
+        <item name="ic_user_submit_path">@drawable/ic_user_submit</item>
     </style>
 
     <style name="Theme.DesparadosAEYE.NoActionBar">
@@ -22,4 +29,5 @@
     <style name="Theme.DesparadosAEYE.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.DesparadosAEYE.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
