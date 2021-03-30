@@ -2,9 +2,8 @@ package com.example.desparadosaeye.data
 
 import com.example.desparadosaeye.ui.conversation.ConversationViewModel
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
+import java.util.regex.Pattern
 
 const val MAX_STATEMENTS_LENGTH = 8192
 
@@ -12,6 +11,15 @@ class ApplicationModel {
 
     val statements: MutableList<Statement>
     var conversationViewModel: ConversationViewModel? = null
+    val banned = arrayOf("xyz", "abc")
+    // TODO("banned = load banned words as newline separated list")
+    private var _applicationMode = ApplicationMode.LoggedOut
+    var applicationMode: ApplicationMode
+        get() = _applicationMode
+        set(value) {
+            _applicationMode = value
+            conversationViewModel?.setMode(applicationMode)
+        }
 
     init {
         statements = mutableListOf(
@@ -33,7 +41,8 @@ class ApplicationModel {
         )
     }
 
-    fun addStatement(origin: StatementOrigin, content: String) {
+    private fun addStatement(origin: StatementOrigin, content: String) {
+
         // truncate _statements from begining if too long
         while (statements.size >= MAX_STATEMENTS_LENGTH) {
             statements.removeFirst()
@@ -55,6 +64,18 @@ class ApplicationModel {
         conversationViewModel?.addStatementAtEnd(statement)
     }
 
+    fun respondToUserInput(input: String) {
+        // add user's statement
+        addStatement(StatementOrigin.USER, input)
+
+        // get AI's response
+        TODO("Add language model")
+        output = AI(input)
+
+        // add AI's response
+        addStatement(StatementOrigin.AI, output)
+    }
+
     fun removeStatement(statement: Statement) {
         val index = statements.lastIndexOf(statement)
         statements.removeAt(index)
@@ -64,7 +85,15 @@ class ApplicationModel {
     }
 
     fun filterContent(input: String): String {
-        throw TODO("filter content language from human or AI")
-        return input
+        // filter language content from both human or AI
+        var modified = input
+        banned.forEach {
+            // https://stackoverflow.com/questions/33254492/how-to-censored-bad-words-offensive-words-in-android-studio/33254897
+            val rx: Pattern = Pattern.compile("\\b$it\\b", Pattern.CASE_INSENSITIVE)
+            modified = rx.matcher(modified)
+                .replaceAll(String(CharArray(it.length))
+                .replace('\u0000', '\u0000'))
+        }
+        return modified
     }
 }

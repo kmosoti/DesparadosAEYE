@@ -16,15 +16,35 @@ class ConversationViewModel : ViewModel() {
     }
 
     fun appendStatement(statement: Statement) {
-
+        // insert at end of recyclerView
+        // scroll down to position of inserted item
     }
 
     fun removeStatement(statement: Statement) {
-
+        // remove frmo recyclerView
     }
 
     fun setMode(applicationMode: ApplicationMode) {
+        when(applicationMode) {
+            ApplicationMode.LoggedOut -> {
 
+            }
+            ApplicationMode.TextInterfaceOnly -> {
+
+            }
+            ApplicationMode.TextAndVoiceInterface -> {
+
+            }
+            ApplicationMode.VoiceInterfaceOnly -> {
+
+            }
+            ApplicationMode.TrainingMode -> {
+
+            }
+            else {
+                throw NotImplementedError("The application mode is set to an undefined state")
+            }
+        }
     }
 
     fun removeStatementAt(index: Int) {
