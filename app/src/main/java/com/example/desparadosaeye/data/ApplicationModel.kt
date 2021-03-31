@@ -1,6 +1,8 @@
 package com.example.desparadosaeye.data
 
 import com.example.desparadosaeye.ui.conversation.ConversationViewModel
+import com.example.desparadosaeye.utils.ContentFilter
+import com.example.desparadosaeye.utils.ConversationMLModel
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
@@ -10,9 +12,11 @@ const val MAX_STATEMENTS_LENGTH = 8192
 class ApplicationModel {
 
     val statements: MutableList<Statement>
+
+    val contentFilter = ContentFilter()
+    val conversationMLModel = ConversationMLModel()
     var conversationViewModel: ConversationViewModel? = null
-    val banned = arrayOf("xyz", "abc")
-    // TODO("banned = load banned words as newline separated list")
+
     private var _applicationMode = ApplicationMode.LoggedOut
     var applicationMode: ApplicationMode
         get() = _applicationMode
@@ -49,13 +53,13 @@ class ApplicationModel {
         }
 
         // filter content
-        val filteredContent = filterContent(content)
+        val filteredContent = contentFilter.filter(content)
 
         // get timestamp
         val dateCreated = SimpleDateFormat("yyyy-MM-dd").format(Date())
 
         // create statement
-        val statement = Statement(origin, content, dateCreated)
+        val statement = Statement(origin, filteredContent, dateCreated)
 
         // add statement to model
         statements.add(statement)
@@ -69,8 +73,7 @@ class ApplicationModel {
         addStatement(StatementOrigin.USER, input)
 
         // get AI's response
-        TODO("Add language model")
-        output = AI(input)
+        val output = conversationMLModel.respond(statements)
 
         // add AI's response
         addStatement(StatementOrigin.AI, output)
@@ -82,18 +85,5 @@ class ApplicationModel {
 
         // maybe update user interface
         conversationViewModel?.removeStatementAt(index)
-    }
-
-    fun filterContent(input: String): String {
-        // filter language content from both human or AI
-        var modified = input
-        banned.forEach {
-            // https://stackoverflow.com/questions/33254492/how-to-censored-bad-words-offensive-words-in-android-studio/33254897
-            val rx: Pattern = Pattern.compile("\\b$it\\b", Pattern.CASE_INSENSITIVE)
-            modified = rx.matcher(modified)
-                .replaceAll(String(CharArray(it.length))
-                .replace('\u0000', '\u0000'))
-        }
-        return modified
     }
 }
