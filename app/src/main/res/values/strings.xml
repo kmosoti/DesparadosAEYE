@@ -3,8 +3,9 @@
     <string name="app_name">DesperadoAEYE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">DesperadosAEye</string>
-    <string name="nav_header_desc">DesparadosAEye</string>
+    <string name="nav_header_title">Desperado</string>
+    <string name="nav_header_subtitle">PushTest@randomemail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <!-- Main Pages Strings-->
@@ -12,22 +13,9 @@
     <string name="menu_account_management">Account Management</string>
     <string name="menu_settings">Settings</string>
 
-    <!-- Conversation Strings -->
-    <string name="copy">copy</string>
-    <string name="delete">delete</string>
-    <string name="send">send</string>
-    <string name="message_copied">message copied</string>
-    <string name="message_deleted">message deleted</string>
-
     <!--Logon Strings-->
     <string name="prompt_password">Enter Password&#8230;</string>
     <string name="prompt_email">Enter Email&#8230;</string>
     <string name="action_sign_in_short">Sign In</string>
     <string name="action_sign_in">Sign In</string>
-    <string name="clipboard_label_message_content">message content</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
 </resources>

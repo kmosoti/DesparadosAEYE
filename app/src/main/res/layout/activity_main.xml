@@ -50,13 +50,15 @@
             android:layout_gravity="center"
             android:text="Sign in"
             android:translationY="600px"/>
+
         <LinearLayout
-            android:layout_width="600px"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
+            android:layout_width="232dp"
+            android:layout_height="72dp"
             android:layout_gravity="center"
-            android:translationY="225dp"
-            android:translationX="59dp">
+            android:orientation="horizontal"
+            android:translationX="59dp"
+            android:translationY="225dp">
+
             <ImageButton
                 android:id="@+id/imageButtonGoogle"
                 android:layout_width="50dp"
@@ -76,5 +78,6 @@
                 android:translationX="50px"
                 app:srcCompat="@drawable/facebook_image" />
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
