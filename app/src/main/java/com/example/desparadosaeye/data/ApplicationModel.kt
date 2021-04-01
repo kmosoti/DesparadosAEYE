@@ -1,11 +1,11 @@
 package com.example.desparadosaeye.data
 
+import android.annotation.SuppressLint
 import com.example.desparadosaeye.ui.conversation.ConversationViewModel
 import com.example.desparadosaeye.utils.ContentFilter
-import com.example.desparadosaeye.utils.ConversationMLModel
+import com.example.desparadosaeye.ai.ConversationMLModel
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.regex.Pattern
 
 const val MAX_STATEMENTS_LENGTH = 8192
 
@@ -21,6 +21,17 @@ class ApplicationModel {
     var applicationMode: ApplicationMode
         get() = _applicationMode
         set(value) {
+            /* Android will take care of system resources for us.
+             * Don't worry about explicitly calling open and close
+            if (_applicationMode == ApplicationMode.LoggedOut &&
+                value != ApplicationMode.LoggedOut) {
+                conversationMLModel = ConversationMLModel()
+            }
+            else if (_applicationMode != ApplicationMode.LoggedOut &&
+                value == ApplicationMode.LoggedOut) {
+                conversationMLModel.close()
+            } */
+
             _applicationMode = value
             conversationViewModel?.setMode(applicationMode)
         }
@@ -45,6 +56,7 @@ class ApplicationModel {
         )
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun addStatement(origin: StatementOrigin, content: String) {
 
         // truncate _statements from begining if too long

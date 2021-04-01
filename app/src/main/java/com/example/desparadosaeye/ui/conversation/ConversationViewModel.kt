@@ -1,5 +1,6 @@
 package com.example.desparadosaeye.ui.conversation
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,47 +12,27 @@ class ConversationViewModel : ViewModel() {
 
     val applicationModel = ApplicationModel()
 
-    init {
-
-    }
-
-    fun appendStatement(statement: Statement) {
-        // insert at end of recyclerView
-        // scroll down to position of inserted item
-    }
-
-    fun removeStatement(statement: Statement) {
-        // remove frmo recyclerView
-    }
-
     fun setMode(applicationMode: ApplicationMode) {
         when(applicationMode) {
             ApplicationMode.LoggedOut -> {
-
-            }
-            ApplicationMode.TextInterfaceOnly -> {
-
-            }
-            ApplicationMode.TextAndVoiceInterface -> {
-
-            }
-            ApplicationMode.VoiceInterfaceOnly -> {
-
+                // navigate to login page
             }
             ApplicationMode.TrainingMode -> {
-
+                // present message that training is enabled so the AI is currently disabled
             }
             else -> {
-                throw NotImplementedError("The application mode is set to an undefined state")
+                // do nothing
             }
         }
     }
 
     fun removeStatementAt(index: Int) {
-        TODO("Not yet implemented")
+        // remove from recyclerView
+
     }
 
     fun addStatementAtEnd(statement: Statement) {
-        TODO("Not yet implemented")
+        // insert at end of recyclerView
+        // scroll down to position of inserted item
     }
 }
