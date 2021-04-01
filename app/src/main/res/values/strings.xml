@@ -25,4 +25,9 @@
     <string name="send">send</string>
     <string name="message_copied">message copied</string>
     <string name="message_deleted">message deleted</string>
+    <string name="menu_account_setup">Account Setup</string>
+    <string name="log_in_button_width">Log in</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_with_facebook_button">sign in with facebook</string>
+    <string name="sign_in_with_google_button">sign in with google</string>
 </resources>

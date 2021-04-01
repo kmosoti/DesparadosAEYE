@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_conversation" >
         <action
             android:id="@+id/action_nav_conversation_to_accountSetup"
-            app:destination="@id/accountSetup" />
+            app:destination="@id/nav_account_setup" />
         <action
             android:id="@+id/action_nav_conversation_to_nav_account_management"
             app:destination="@id/nav_account_management" />
@@ -32,9 +32,10 @@
         android:name="com.example.desparadosaeye.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
-        android:id="@+id/accountSetup"
+        android:id="@+id/nav_account_setup"
         android:name="com.example.desparadosaeye.ui.accountSetup.AccountSetup"
-        android:label="account_setup_fragment"
+        android:label="@string/menu_account_setup"
         tools:layout="@layout/account_setup_fragment" />
 </navigation>

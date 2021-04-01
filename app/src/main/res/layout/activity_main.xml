@@ -8,9 +8,10 @@
     tools:context=".ui.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        tools:ignore="UselessParent">
 
         <ImageView
             android:id="@+id/imageView"
@@ -19,8 +20,8 @@
             android:layout_gravity="center"
             android:fadingEdge="horizontal|vertical"
             android:foreground="@drawable/rounded_fg"
-            android:translationY="600px"
-            app:srcCompat="@drawable/cowboy_logo" />
+            app:srcCompat="@drawable/cowboy_logo"
+            android:contentDescription="@string/nav_header_title" />
         <!-- Email Prompt Field-->
 
         <EditText
@@ -31,7 +32,8 @@
             android:ems="10"
             android:hint="@string/prompt_email"
             android:inputType="textEmailAddress"
-            android:translationY="600px" />
+            tools:ignore="Autofill"
+            android:layout_marginTop="@dimen/login_fields_margin"/>
 
         <EditText
             android:id="@+id/TextPassword"
@@ -41,54 +43,59 @@
             android:ems="10"
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
-            android:translationY="600px" />
+            tools:ignore="Autofill"
+            android:layout_marginBottom="@dimen/login_fields_margin"/>
+
         <LinearLayout
-            android:layout_width="600px"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:translationY="225dp">
+            android:orientation="horizontal">
             <Button
                 android:id="@+id/buttonSignIn"
-                android:layout_width="280px"
+                android:layout_width="@dimen/login_button"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Log in"/>
+                android:text="@string/log_in_button_width"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/buttonCreateAccount"
-                android:layout_width="280px"
+                android:layout_width="@dimen/login_button"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="20px"
-                android:text="Sign Up"/>
+                android:text="@string/sign_up_button"
+                tools:ignore="ButtonStyle" />
         </LinearLayout>
+
         <LinearLayout
-            android:layout_width="230dp"
-            android:layout_height="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:translationX="59dp"
-            android:translationY="225dp">
+            android:layout_margin="@dimen/auth_provider_button_margin">
 
             <ImageButton
                 android:id="@+id/imageButtonGoogle"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/auth_provider_button_size"
+                android:layout_height="@dimen/auth_provider_button_size"
                 android:layout_gravity="center"
                 android:foreground="@drawable/rounded_fg"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/google_image" />
+                app:srcCompat="@drawable/google_image"
+                android:layout_margin="@dimen/auth_provider_button_margin"
+                android:contentDescription="@string/sign_in_with_google_button" />
 
             <ImageButton
                 android:id="@+id/imageButtonFacebook"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/auth_provider_button_size"
+                android:layout_height="@dimen/auth_provider_button_size"
                 android:layout_gravity="center"
                 android:foreground="@drawable/rounded_fg"
                 android:scaleType="fitXY"
-                android:translationX="50px"
-                app:srcCompat="@drawable/facebook_image" />
+                app:srcCompat="@drawable/facebook_image"
+                android:layout_margin="@dimen/auth_provider_button_margin"
+                android:contentDescription="@string/sign_in_with_facebook_button" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
