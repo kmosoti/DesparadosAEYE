@@ -45,8 +45,4 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-
-    fun onClickHandler(view: View) {
-        // here's where the code executes
-    }
 }

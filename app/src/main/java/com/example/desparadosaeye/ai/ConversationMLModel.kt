@@ -4,12 +4,11 @@ import com.example.desparadosaeye.data.Statement
 
 class ConversationMLModel {
 
-    private val gpt2Client = GPT2Client()
 
     fun respond(statements: List<Statement>): String {
         // repsonds to dialogue
         val input = _format_statements(statements)
-        return gpt2Client.generate(input, 100)
+        return "Sorry, the Ai needs work"
     }
 
     fun train(statements: List<Statement>) {

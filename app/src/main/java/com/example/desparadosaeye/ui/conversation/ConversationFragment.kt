@@ -5,19 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.desparadosaeye.R
-import com.google.android.material.textfield.TextInputEditText
 
 class ConversationFragment : Fragment() {
 
     private lateinit var conversationViewModel: ConversationViewModel
 
-    private lateinit var statementsRecyclerView: RecyclerView
-    private lateinit var userMessageEditText: TextInputEditText
+    private lateinit var submitButton: ImageButton
+    lateinit var statementsRecyclerView: RecyclerView
+    private lateinit var userMessageEditText: AppCompatEditText
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -34,13 +35,14 @@ class ConversationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         statementsRecyclerView = view.findViewById(R.id.statements_recycler_view)
-        statementsRecyclerView.adapter = StatementAdapter(conversationViewModel.applicationModel)
         statementsRecyclerView.layoutManager = LinearLayoutManager(context)
 
         userMessageEditText = view.findViewById(R.id.user_message_edit_text)
 
-        val submitButton = view.findViewById<ImageButton>(R.id.conversation_submit_button)
+        submitButton = view.findViewById(R.id.conversation_submit_button)
         submitButton.setOnClickListener { onClickConversationSubmitButton(it) }
+
+        conversationViewModel.conversationFragment = this
     }
 
     fun onClickConversationSubmitButton(view: View) {
