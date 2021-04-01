@@ -1,4 +1,4 @@
-package com.example.desparadosaeye;
+package com.example.desparadosaeye.ui;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.desparadosaeye.R;
+import com.example.desparadosaeye.data.DataBaseHelper;
+import com.example.desparadosaeye.data.loginModel;
 
 public class MainActivity extends AppCompatActivity {
         Button buttonSignIn;
@@ -27,17 +31,17 @@ public class MainActivity extends AppCompatActivity {
                                 loginModel newLogin;
                                 try {
                                         newLogin = new loginModel(TextEmailAddress.getText().toString(), TextPassword.getText().toString());
-                                        Toast.makeText(com.example.desparadosaeye.MainActivity.this, newLogin.toString(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MainActivity.this, newLogin.toString(), Toast.LENGTH_SHORT).show();
                                 }
                                 catch(Exception e){
-                                        Toast.makeText(com.example.desparadosaeye.MainActivity.this, "Error creating User", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MainActivity.this, "Error creating User", Toast.LENGTH_SHORT).show();
                                         newLogin = new loginModel("None","---");
                                 }
-                                DataBaseHelper dataBaseHelper = new DataBaseHelper(com.example.desparadosaeye.MainActivity.this);
+                                DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
 
                                 boolean success = dataBaseHelper.addUser(newLogin);
 
-                                Toast.makeText(com.example.desparadosaeye.MainActivity.this, "Success="+success, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Success="+success, Toast.LENGTH_SHORT).show();
                         }
 
                 });

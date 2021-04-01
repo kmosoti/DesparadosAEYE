@@ -1,4 +1,4 @@
-package com.example.desparadosaeye;
+package com.example.desparadosaeye.data;
 
 public class loginModel {
     private String name;

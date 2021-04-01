@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,21 +42,35 @@
             android:hint="@string/prompt_password"
             android:inputType="textPassword"
             android:translationY="600px" />
-
-        <Button
-            android:id="@+id/buttonSignIn"
-            android:layout_width="280px"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Sign in"
-            android:translationY="600px"/>
         <LinearLayout
             android:layout_width="600px"
             android:layout_height="70dp"
-            android:orientation="horizontal"
             android:layout_gravity="center"
-            android:translationY="225dp"
-            android:translationX="59dp">
+            android:orientation="horizontal"
+            android:translationY="225dp">
+            <Button
+                android:id="@+id/buttonSignIn"
+                android:layout_width="280px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Log in"/>
+
+            <Button
+                android:id="@+id/buttonCreateAccount"
+                android:layout_width="280px"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="20px"
+                android:text="Sign Up"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="230dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:translationX="59dp"
+            android:translationY="225dp">
+
             <ImageButton
                 android:id="@+id/imageButtonGoogle"
                 android:layout_width="50dp"

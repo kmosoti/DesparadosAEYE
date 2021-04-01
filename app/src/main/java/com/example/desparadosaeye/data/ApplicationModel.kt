@@ -9,7 +9,23 @@ const val MAX_STATEMENTS_LENGTH = 8192
 
 class ApplicationModel {
 
-    val statements: MutableList<Statement>
+    val statements: MutableList<Statement> = mutableListOf(
+        Statement(
+            StatementOrigin.USER,
+            "hello, how are you",
+            "2021-03-30T19:20:30-05:00"
+        ),
+        Statement(
+            StatementOrigin.AI,
+            "I am well. And you?",
+            "2021-03-30T19:20:30-07:00"
+        ),
+        Statement(
+            StatementOrigin.USER,
+            "very good ... especially now that you're working",
+            "2021-03-30T19:20:30-11:00"
+        ),
+    )
     var conversationViewModel: ConversationViewModel? = null
     val banned = arrayOf("xyz", "abc")
     // TODO("banned = load banned words as newline separated list")
@@ -20,26 +36,6 @@ class ApplicationModel {
             _applicationMode = value
             conversationViewModel?.setMode(applicationMode)
         }
-
-    init {
-        statements = mutableListOf(
-            Statement(
-                StatementOrigin.USER,
-                "hello, how are you",
-                "2021-03-30T19:20:30-05:00"
-            ),
-            Statement(
-                StatementOrigin.AI,
-                "I am well. And you?",
-                "2021-03-30T19:20:30-07:00"
-            ),
-            Statement(
-                StatementOrigin.USER,
-                "very good ... especially now that you're working",
-                "2021-03-30T19:20:30-11:00"
-            ),
-        )
-    }
 
     private fun addStatement(origin: StatementOrigin, content: String) {
 
