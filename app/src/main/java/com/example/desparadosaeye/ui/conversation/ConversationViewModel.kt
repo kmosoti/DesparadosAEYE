@@ -41,7 +41,7 @@ class ConversationViewModel : ViewModel() {
             ApplicationMode.TrainingMode -> {
 
             }
-            else {
+            else->{
                 throw NotImplementedError("The application mode is set to an undefined state")
             }
         }

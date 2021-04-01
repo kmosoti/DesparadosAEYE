@@ -1,24 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
-
-    <include
-        layout="@layout/app_bar_main"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
-</androidx.drawerlayout.widget.DrawerLayout>
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="141dp"
+            android:layout_height="124dp"
+            android:layout_gravity="center"
+            android:fadingEdge="horizontal|vertical"
+            android:foreground="@drawable/rounded_fg"
+            android:translationY="600px"
+            app:srcCompat="@drawable/cowboy_logo" />
+        <!-- Email Prompt Field-->
+
+        <EditText
+            android:id="@+id/TextEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:translationY="600px" />
+
+        <EditText
+            android:id="@+id/TextPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword"
+            android:translationY="600px" />
+
+        <Button
+            android:id="@+id/buttonSignIn"
+            android:layout_width="280px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sign in"
+            android:translationY="600px"/>
+        <LinearLayout
+            android:layout_width="600px"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:translationY="225dp"
+            android:translationX="59dp">
+            <ImageButton
+                android:id="@+id/imageButtonGoogle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:foreground="@drawable/rounded_fg"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/google_image" />
+
+            <ImageButton
+                android:id="@+id/imageButtonFacebook"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:foreground="@drawable/rounded_fg"
+                android:scaleType="fitXY"
+                android:translationX="50px"
+                app:srcCompat="@drawable/facebook_image" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

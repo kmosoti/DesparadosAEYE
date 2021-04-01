@@ -70,10 +70,10 @@ class ApplicationModel {
 
         // get AI's response
         TODO("Add language model")
-        output = AI(input)
+        //output = AI(input)
 
         // add AI's response
-        addStatement(StatementOrigin.AI, output)
+        //addStatement(StatementOrigin.AI, output)
     }
 
     fun removeStatement(statement: Statement) {
