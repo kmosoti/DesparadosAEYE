@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     tools:context=".ui.login.LoginActivity">
 
     <LinearLayout
@@ -52,12 +52,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/buttonSignIn"
                 android:layout_width="@dimen/login_button"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/log_in_button_width"
+                android:text="@string/log_in_button"
+                android:layout_margin="@dimen/login_button_margin"
+                android:onClick="onLoginButtonPress"
                 tools:ignore="ButtonStyle" />
 
             <Button
@@ -66,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/sign_up_button"
+                android:layout_margin="@dimen/login_button_margin"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
 
