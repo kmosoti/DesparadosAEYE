@@ -1,5 +1,5 @@
 <resources>
-    <!--General Strings-->
+    <!--General -->
     <string name="app_name">DesperadoAEYE</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,32 +7,40 @@
     <string name="nav_header_desc">DesparadosAEye</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Main Pages Strings-->
+    <!-- Main Page -->
     <string name="menu_conversation">Conversation</string>
     <string name="menu_account_management">Account Management</string>
     <string name="menu_settings">Settings</string>
 
-    <!--Logon Strings-->
+    <!-- Logon -->
     <string name="prompt_password">Enter Password&#8230;</string>
     <string name="prompt_email">Enter Email&#8230;</string>
     <string name="action_sign_in_short">Sign In</string>
     <string name="action_sign_in">Sign In</string>
     <string name="clipboard_label_message_content">message content</string>
 
-    <!-- Conversation Strings -->
+    <string name="log_in_button">Log in</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_with_facebook_button">sign in with facebook</string>
+    <string name="sign_in_with_google_button">sign in with google</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <!-- Account Setup -->
+    <string name="account_setup_first_name">First Name</string>
+    <string name="account_setup_last_name">Last Name</string>
+    <string name="account_setup_new_account_setup">New Account Setup</string>
+
+    <!-- Conversation -->
     <string name="copy">copy</string>
     <string name="delete">delete</string>
     <string name="send">send</string>
     <string name="message_copied">message copied</string>
     <string name="message_deleted">message deleted</string>
     <string name="menu_account_setup">Account Setup</string>
-    <string name="log_in_button_width">Log in</string>
-    <string name="sign_up_button">Sign Up</string>
-    <string name="sign_in_with_facebook_button">sign in with facebook</string>
-    <string name="sign_in_with_google_button">sign in with google</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+
 </resources>

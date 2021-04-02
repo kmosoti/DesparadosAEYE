@@ -28,4 +28,10 @@
         android:name="com.example.desparadosaeye.ui.account_setup.AccountSetupFragment"
         android:label="@string/menu_account_setup"
         tools:layout="@layout/fragment_account_setup" />
+
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.desparadosaeye.ui.login.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

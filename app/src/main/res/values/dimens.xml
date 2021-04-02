@@ -6,13 +6,16 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
-    <!-- Conversation dimensions -->
+    <!-- Conversation -->
     <dimen name="corner_radius">4dp</dimen>
     <dimen name="statement_margin">8dp</dimen>
     <dimen name="statement_padding_lr">12dp</dimen>
     <dimen name="statement_padding_top">4dp</dimen>
-    <dimen name="login_button">180</dimen>
+
+    <!-- Login -->
+    <dimen name="login_button">120dp</dimen>
     <dimen name="auth_provider_button_size">50dp</dimen>
     <dimen name="auth_provider_button_margin">8dp</dimen>
     <dimen name="login_fields_margin">24dp</dimen>
+    <dimen name="login_button_margin">4dp</dimen>
 </resources>
