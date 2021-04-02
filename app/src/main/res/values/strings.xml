@@ -30,4 +30,9 @@
     <string name="sign_up_button">Sign Up</string>
     <string name="sign_in_with_facebook_button">sign in with facebook</string>
     <string name="sign_in_with_google_button">sign in with google</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

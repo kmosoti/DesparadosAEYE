@@ -40,13 +40,12 @@ class ConversationViewModel : ViewModel() {
         }
     }
 
-    fun removeStatementAt(index: Int) {
+    fun notifyStatementRemoved(index: Int) {
         // remove from recyclerView
         statementAdapter.notifyItemRemoved(index)
     }
 
-    fun addStatementAtEnd(statement: Statement) {
-        val index = applicationModel.statements.size - 1
+    fun notifyStatementAdded(index: Int) {
         // insert at end of recyclerView
         statementAdapter.notifyItemInserted(index)
         // scroll down to position of inserted item

@@ -1,4 +1,4 @@
-package com.example.desparadosaeye.ui.accountSetup
+package com.example.desparadosaeye.ui.account_setup
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.desparadosaeye.R
 
-class AccountSetup : Fragment() {
+class AccountSetupFragment : Fragment() {
 
     companion object {
-        fun newInstance() = AccountSetup()
+        fun newInstance() = AccountSetupFragment()
     }
 
     private lateinit var viewModel: AccountSetupViewModel
@@ -20,7 +20,7 @@ class AccountSetup : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.account_setup_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_account_setup, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -77,7 +77,7 @@ class ApplicationModel {
         statements.add(statement)
 
         // maybe update user interface
-        conversationViewModel?.addStatementAtEnd(statement)
+        conversationViewModel?.notifyStatementAdded(statements.size - 1)
     }
 
     fun respondToUserInput(input: String) {
@@ -96,6 +96,6 @@ class ApplicationModel {
         statements.removeAt(index)
 
         // maybe update user interface
-        conversationViewModel?.removeStatementAt(index)
+        conversationViewModel?.notifyStatementRemoved(index)
     }
 }
