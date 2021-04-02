@@ -1,8 +1,11 @@
 package com.example.desparadosaeye.ui.conversation
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.desparadosaeye.data.ApplicationMode
 import com.example.desparadosaeye.data.ApplicationModel
 import com.example.desparadosaeye.data.Statement
@@ -10,48 +13,42 @@ import com.example.desparadosaeye.data.Statement
 class ConversationViewModel : ViewModel() {
 
     val applicationModel = ApplicationModel()
+    private var statementAdapter = StatementAdapter(applicationModel)
+    private lateinit var _conversationFragment: ConversationFragment
+    var conversationFragment: ConversationFragment
+        get() = _conversationFragment
+        set(value) {
+            _conversationFragment = value
+            conversationFragment.statementsRecyclerView.adapter = statementAdapter
+        }
 
     init {
-
-    }
-
-    fun appendStatement(statement: Statement) {
-        // insert at end of recyclerView
-        // scroll down to position of inserted item
-    }
-
-    fun removeStatement(statement: Statement) {
-        // remove frmo recyclerView
+        applicationModel.conversationViewModel = this
     }
 
     fun setMode(applicationMode: ApplicationMode) {
         when(applicationMode) {
             ApplicationMode.LoggedOut -> {
-
-            }
-            ApplicationMode.TextInterfaceOnly -> {
-
-            }
-            ApplicationMode.TextAndVoiceInterface -> {
-
-            }
-            ApplicationMode.VoiceInterfaceOnly -> {
-
+                // navigate to login page
             }
             ApplicationMode.TrainingMode -> {
-
+                // present message that training is enabled so the AI is currently disabled
             }
-            else->{
-                throw NotImplementedError("The application mode is set to an undefined state")
+            else -> {
+                // do nothing
             }
         }
     }
 
-    fun removeStatementAt(index: Int) {
-        TODO("Not yet implemented")
+    fun notifyStatementRemoved(index: Int) {
+        // remove from recyclerView
+        statementAdapter.notifyItemRemoved(index)
     }
 
-    fun addStatementAtEnd(statement: Statement) {
-        TODO("Not yet implemented")
+    fun notifyStatementAdded(index: Int) {
+        // insert at end of recyclerView
+        statementAdapter.notifyItemInserted(index)
+        // scroll down to position of inserted item
+        conversationFragment.statementsRecyclerView.scrollToPosition(index)
     }
 }

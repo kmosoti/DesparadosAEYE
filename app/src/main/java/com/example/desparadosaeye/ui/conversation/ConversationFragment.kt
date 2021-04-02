@@ -1,10 +1,11 @@
 package com.example.desparadosaeye.ui.conversation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,7 +16,9 @@ class ConversationFragment : Fragment() {
 
     private lateinit var conversationViewModel: ConversationViewModel
 
-    private lateinit var statementsRecyclerView: RecyclerView
+    private lateinit var submitButton: ImageButton
+    lateinit var statementsRecyclerView: RecyclerView
+    private lateinit var userMessageEditText: AppCompatEditText
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -32,8 +35,16 @@ class ConversationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         statementsRecyclerView = view.findViewById(R.id.statements_recycler_view)
-        statementsRecyclerView.adapter = StatementAdapter(conversationViewModel.applicationModel)
         statementsRecyclerView.layoutManager = LinearLayoutManager(context)
 
+        userMessageEditText = view.findViewById(R.id.user_message_edit_text)
+
+        submitButton = view.findViewById(R.id.conversation_submit_button)
+        submitButton.setOnClickListener {
+            conversationViewModel.applicationModel.respondToUserInput(userMessageEditText.text.toString())
+            userMessageEditText.text?.clear()
+        }
+
+        conversationViewModel.conversationFragment = this
     }
 }

@@ -26,20 +26,20 @@
             android:id="@+id/user_message_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/submit_button"
+            android:layout_toStartOf="@+id/conversation_submit_button"
             android:inputType="textMultiLine"
             android:maxLines="5"
             android:importantForAutofill="no"
             tools:ignore="LabelFor" />
 
         <ImageButton
-            android:id="@+id/submit_button"
+            android:id="@+id/conversation_submit_button"
             android:layout_width="64dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:background="@android:color/transparent"
-            android:src="?attr/ic_user_submit_path"
-            android:contentDescription="@string/send" />
+            android:contentDescription="@string/send"
+            android:src="?attr/ic_user_submit_path" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.desparadosaeye.ui.accountSetup
+package com.example.desparadosaeye.ui.account_setup
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
