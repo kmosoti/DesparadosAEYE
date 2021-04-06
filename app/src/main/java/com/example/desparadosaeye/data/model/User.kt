@@ -3,7 +3,13 @@ package com.example.desparadosaeye.data.model
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
-data class LoggedInUser(
+class User(
     val userId: String,
-    val displayName: String
-)
+    val displayName: String,
+    val password: String,
+    val matrix: Array<Array<Boolean>>
+) {
+    fun save() {
+        TODO("save everything")
+    }
+}
