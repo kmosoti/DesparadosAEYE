@@ -1,6 +1,8 @@
 package com.example.desparadosaeye.ai
 
 import com.example.desparadosaeye.data.Statement
+const val ROWSIZE = 1024
+const val COLSIZE = 1024
 
 class ConversationMLModel {
 
