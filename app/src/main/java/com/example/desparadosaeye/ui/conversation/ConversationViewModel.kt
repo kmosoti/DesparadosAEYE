@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.desparadosaeye.ai.ConversationMLModel
 import com.example.desparadosaeye.data.ApplicationMode
 import com.example.desparadosaeye.data.ApplicationModel
 import com.example.desparadosaeye.data.Statement
+import com.example.desparadosaeye.data.StatementOrigin
 
 class ConversationViewModel : ViewModel() {
 
@@ -22,8 +24,21 @@ class ConversationViewModel : ViewModel() {
             conversationFragment.statementsRecyclerView.adapter = statementAdapter
         }
 
+    private val conversationMLModel = ConversationMLModel()
+
     init {
         applicationModel.conversationViewModel = this
+    }
+
+    fun respondToUserInput(input: String) {
+        // add user's statement
+        applicationModel.addStatement(StatementOrigin.USER, input)
+
+        // get AI's response
+        val output =  conversationMLModel.respond(applicationModel.statements)
+
+        // add AI's response
+        applicationModel.addStatement(StatementOrigin.AI, output)
     }
 
     fun setMode(applicationMode: ApplicationMode) {
