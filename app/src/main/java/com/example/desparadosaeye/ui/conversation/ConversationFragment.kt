@@ -41,7 +41,7 @@ class ConversationFragment : Fragment() {
 
         submitButton = view.findViewById(R.id.conversation_submit_button)
         submitButton.setOnClickListener {
-            conversationViewModel.applicationModel.respondToUserInput(userMessageEditText.text.toString())
+            conversationViewModel.respondToUserInput(userMessageEditText.text.toString())
             userMessageEditText.text?.clear()
         }
 

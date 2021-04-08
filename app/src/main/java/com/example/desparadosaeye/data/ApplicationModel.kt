@@ -14,7 +14,6 @@ class ApplicationModel {
     val statements: MutableList<Statement>
 
     val contentFilter = ContentFilter()
-    val conversationMLModel = ConversationMLModel()
     var conversationViewModel: ConversationViewModel? = null
 
     private var _applicationMode = ApplicationMode.LoggedOut
@@ -57,7 +56,7 @@ class ApplicationModel {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private fun addStatement(origin: StatementOrigin, content: String) {
+    fun addStatement(origin: StatementOrigin, content: String) {
 
         // truncate _statements from begining if too long
         while (statements.size >= MAX_STATEMENTS_LENGTH) {
@@ -78,17 +77,6 @@ class ApplicationModel {
 
         // maybe update user interface
         conversationViewModel?.notifyStatementAdded(statements.size - 1)
-    }
-
-    fun respondToUserInput(input: String) {
-        // add user's statement
-        addStatement(StatementOrigin.USER, input)
-
-        // get AI's response
-        val output = conversationMLModel.respond(statements)
-
-        // add AI's response
-        addStatement(StatementOrigin.AI, output)
     }
 
     fun removeStatement(statement: Statement) {
