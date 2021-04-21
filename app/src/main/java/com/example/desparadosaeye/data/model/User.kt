@@ -25,7 +25,6 @@ class User(
     val ROWSIZE: Int = com.example.desparadosaeye.ai.ROWSIZE
 
     init {
-
         generateMatrix()
         generateUserID()
     }
@@ -74,9 +73,18 @@ class User(
         matrix[rowIndex][colIndex] = value
     }
 
-    fun isRegistered():Boolean
+    /**
+     * @param email: User email to check registration with
+     * @return true if already registered, false if not registered
+     */
+    fun isRegistered(email: String):Boolean
     {
         TODO("Determine if the user is currently registered, if they are not return false")
+        if(email!=null)
+        {
+            return true
+        }
+        return false
     }
 
     fun isLoggedIn():Boolean
