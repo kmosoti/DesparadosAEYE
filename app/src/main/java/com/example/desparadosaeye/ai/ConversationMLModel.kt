@@ -4,7 +4,6 @@ import com.example.desparadosaeye.data.Statement
 
 class ConversationMLModel {
 
-
     fun respond(statements: List<Statement>): String {
         // repsonds to dialogue
         val input = _format_statements(statements)
