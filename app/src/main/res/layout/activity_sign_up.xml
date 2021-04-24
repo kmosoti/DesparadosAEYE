@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    android:padding="@dimen/box_inset_layout_padding"
+    android:visibility="visible"
+    tools:context=".ui.login.SignUpActivity"
+    tools:deviceIds="wear">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/inner_frame_layout_padding">
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/createAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="412dp"
+        android:text="Create Account" />
+
+    <TextView
+        android:id="@+id/CreateAccountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:gravity="center_horizontal"
+        android:text="Create Account"
+        android:textSize="32dp" />
+
+    <EditText
+        android:id="@+id/enterFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="154dp"
+        android:ems="10"
+        android:hint="First Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/enterLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="204dp"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/enterEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="256dp"
+        android:ems="10"
+        android:hint="Email..."
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/enterPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="306dp"
+        android:ems="10"
+        android:hint="Password..."
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/PasswordRetype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="362dp"
+        android:ems="10"
+        android:hint="Re-type password..."
+        android:inputType="textPassword" />
+
+</RelativeLayout>

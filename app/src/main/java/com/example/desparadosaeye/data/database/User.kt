@@ -1,7 +1,4 @@
-package com.example.desparadosaeye.data.model
-import android.opengl.Matrix
-import com.example.desparadosaeye.ai.COLSIZE
-import com.example.desparadosaeye.ai.ROWSIZE
+package com.example.desparadosaeye.data.database
 
 /**
  * Data class that captures user information for logged in users retrieved from LoginRepository
@@ -24,10 +21,10 @@ class User(
     val COLSIZE: Int = com.example.desparadosaeye.ai.COLSIZE
     val ROWSIZE: Int = com.example.desparadosaeye.ai.ROWSIZE
 
-    init {
-        generateMatrix()
-        generateUserID()
-    }
+//    init {
+//        generateMatrix()
+//        generateUserID()
+//    }
     lateinit var matrix: Array<Array<Boolean>>
 
     private fun generateMatrix()
@@ -52,6 +49,7 @@ class User(
     fun getUserFirstName(): String = this.firstName
     fun getUserLastName(): String = this.lastName
     fun getUserEmail(): String = this.email
+    fun getUserPassword(): String = this.password
     fun getUserMatrix():Array<Array<Boolean>> = this.matrix
 
     /**
@@ -97,6 +95,7 @@ class User(
         TODO("Generate a random or sequential UserID, double-check with SQLLite that the ID Doesn't already exist")
 
     }
+
 }
 
 
