@@ -1,11 +1,16 @@
 package com.example.desparadosaeye.ui.conversation.tokenization
 
+import android.text.TextUtils
+
+private const val UNK_TOKEN: Int = 3
+
 // copied from open source example:
 // https://github.com/huggingface/tflite-android-transformers/blob/master/gpt2/src/main/java/co/huggingface/android_transformers/gpt2/tokenization/GPT2Tokenizer.kt
 class BlenderBotTokenizer(
     private val encoder: Map<String, Int>,
     private val decoder: Map<Int, String>,
-    private val bpeRanks: Map<Pair<String, String>, Int>) {
+    private val bpeRanks: Map<Pair<String, String>, Int>
+) {
     private val encodeRegex = Regex("""'s|'t|'re|'ve|'m|'ll|'d| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
 
     fun decode(tokens: List<Int>): String {
@@ -22,12 +27,36 @@ class BlenderBotTokenizer(
                 .toArray()
                 .joinToString("")
         }
+        /*val strings: Array<String> = TextUtils.split(text, splitRegex)
 
-        return tokens
+        print("these are the string: |$strings|\n")
+        for (elem in strings) {
+            print("elem i: $elem\n")
+        }
+
+        val tokens = strings
+            .filter { it.length > 0 }
+            .map { encoder[it] ?: UNK_TOKEN }
+
+        print("these are the tokens: |$tokens|\n")
+        for (elem in tokens) {
+            print("elem i: $elem\n")
+        }
+
+        return tokens.toMutableList()*/
+
+
+        val finalTokens = tokens
             .map { bpe(it) }
             .flatten()
-            .map { encoder[it]!! }
-            .toMutableList()
+            .map { encoder[it] ?: UNK_TOKEN }
+
+        print("these are the final tokens: |$finalTokens|\n")
+        for (elem in finalTokens) {
+            print("elem i: $elem\n")
+        }
+
+        return finalTokens.toMutableList()
     }
 
     private fun bpe(token: String): List<String> {
@@ -52,8 +81,8 @@ class BlenderBotTokenizer(
                     break
                 }
 
-                if (word[i] == first && i < word.size-1 && word[i+1] == second) {
-                    newWord.add(first+second)
+                if (word[i] == first && i < word.size-1 && word[i + 1] == second) {
+                    newWord.add(first + second)
                     i += 2
                 } else {
                     newWord.add(word[i])
@@ -75,7 +104,7 @@ class BlenderBotTokenizer(
     private fun getPairs(word: List<String>): Set<Pair<String, String>> {
         return mutableSetOf<Pair<String, String>>().apply {
             for (i in 0 until word.size-1) {
-                add(word[i] to word[i+1])
+                add(word[i] to word[i + 1])
             }
         }
     }
