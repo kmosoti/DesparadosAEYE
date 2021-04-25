@@ -26,6 +26,9 @@ private const val MERGES_PATH      = "blenderbot-merges.txt"
 private const val BYTES_PER_INT = 4
 private const val START_TOKEN: Int = 1
 private const val END_TOKEN: Int = 2
+const val START_STRING = "__start__"
+const val END_STRING = "__end__"
+
 
 class ConversationViewModel(application: Application) : AndroidViewModel(application) {
     private val initJob: Job
@@ -105,9 +108,11 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
 
         val modelTokens = mutableListOf<Int>()
 
-        print("\n\n ===== all model inputs/outputs allocated ===== \n\n")
+        print("\n\n ===== all model inputs/outputs allocated. running ===== \n\n")
 
-        repeat(SEQUENCE_LENGTH) genloop@{
+        var done = false
+
+        while (!done && model_len < SEQUENCE_LENGTH - 1) {
 
             model_len_buffer.putInt(0 * BYTES_PER_INT, model_len)
             tflite.runForMultipleInputsOutputs(interpreterInputs, outputMap)
@@ -115,9 +120,12 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
 
             val token: Int = tokenOutputBuffer
                 .get(0)
-                //.getInt(0 * BYTES_PER_INT)
+            //.getInt(0 * BYTES_PER_INT)
+            print("token value: |$token|. model_len: $model_len\n")
+
             if (token == END_TOKEN) { // this means __end__
-                return@genloop
+                done = true
+                break
             }
 
             // append token to model token seq

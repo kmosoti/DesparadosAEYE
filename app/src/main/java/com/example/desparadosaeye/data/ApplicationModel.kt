@@ -2,38 +2,18 @@ package com.example.desparadosaeye.data
 
 import android.annotation.SuppressLint
 import com.example.desparadosaeye.ui.conversation.ConversationViewModel
-import com.example.desparadosaeye.utils.ContentFilter
-import java.lang.Integer.max
 import java.lang.Integer.min
 import java.text.SimpleDateFormat
 import java.util.*
 
 const val MAX_STATEMENTS_LENGTH = 8192
+const val START_QUOTE = "<s>"
+const val END_QUOTE = "</s>"
 
 class ApplicationModel {
 
-    val statements: MutableList<Statement>
+    val statements = arrayListOf<Statement>().toMutableList()
     var conversationViewModel: ConversationViewModel? = null
-
-    init {
-        statements = mutableListOf(/*
-            Statement(
-                StatementOrigin.USER,
-                "hello, how are you",
-                "2021-03-30T19:20:30-05:00"
-            ),
-            Statement(
-                StatementOrigin.AI,
-                "I am well. And you?",
-                "2021-03-30T19:20:30-07:00"
-            ),
-            Statement(
-                StatementOrigin.USER,
-                "very good ... especially now that you're working",
-                "2021-03-30T19:20:30-11:00"
-            ),*/
-        )
-    }
 
     @SuppressLint("SimpleDateFormat")
     fun addStatement(origin: StatementOrigin, content: String) {
@@ -78,9 +58,10 @@ class ApplicationModel {
             rightOfset = statements.size - trueTrailingLen + i
             statement = statements[rightOfset]
             outString += when {
-                i == 0 -> "" + statement.content + "</s>\n"
-                i == trueTrailingLen - 1 -> "<s>" + statement.content + "</s>"
-                else -> "<s>" + statement.content + "</s>\n"
+                trueTrailingLen - 1 == 0 -> statement.content
+                i == trueTrailingLen - 1 -> START_QUOTE + statement.content
+                i == 0 -> statement.content + " " + END_QUOTE + "\n"
+                else -> START_QUOTE + statement.content + " " + END_QUOTE + "\n"
             }
         }
 
