@@ -28,6 +28,7 @@ private const val START_TOKEN: Int = 1
 private const val END_TOKEN: Int = 2
 const val START_STRING = "__start__"
 const val END_STRING = "__end__"
+private const val WORD_CODE = "</w>"
 
 
 class ConversationViewModel(application: Application) : AndroidViewModel(application) {
@@ -52,20 +53,20 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
         initJob = viewModelScope.launch {
             val encoder  = loadEncoder()
             val decoder  = encoder.entries.associateBy({ it.value }, { it.key })
-            val bpeRanks = loadBpeRanks()
+            val merges = loadMerges()
 
-            tokenizer = BlenderBotTokenizer(encoder, decoder, bpeRanks)
+            tokenizer = BlenderBotTokenizer(encoder, decoder, merges)
             tflite    = loadModel()
         }
     }
 
     fun genorateResponse(inputStatements: String): String {
-        print("\n\n =================== encoding input: \"$inputStatements\" ======================= \n\n")
+        //print("\n\n =================== encoding input: \"$inputStatements\" ======================= \n\n")
 
         val allToken = tokenizer.encode(inputStatements)
         val inputTokens = allToken.takeLast(SEQUENCE_LENGTH).toIntArray()
 
-        print("\n\n =================== encoded input as: [$inputTokens] ======================= \n\n")
+        //print("\n\n =================== encoded input as: [$inputTokens] ======================= \n\n")
 
         val userTokensBuffer = ByteBuffer.allocateDirect(SEQUENCE_LENGTH* BYTES_PER_INT)
                                          .order(ByteOrder.nativeOrder())
@@ -94,8 +95,8 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
         // we update model_len_buffer on every loop iteration
         // so it is not initialized here
 
-        print("\n\n userTokensBuffer $userTokensBuffer \n\n")
-        print("\n\n modelTokensBuffer $modelTokensBuffer \n\n")
+        //print("\n\n userTokensBuffer $userTokensBuffer \n\n")
+        //print("\n\n modelTokensBuffer $modelTokensBuffer \n\n")
 
         val interpreterInputs = arrayOf(userTokensBuffer, modelTokensBuffer,
                                         user_len_buffer, model_len_buffer)
@@ -104,27 +105,22 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
         val tokenOutputBuffer = IntArray(1)
 
         val outputMap = mutableMapOf<Int, Any>(0 to tokenOutputBuffer)
-        //outputMap[OUTPUT_TFLITE_NODE_INDEX] = tokenOutputBuffer
 
         val modelTokens = mutableListOf<Int>()
 
         print("\n\n ===== all model inputs/outputs allocated. running ===== \n\n")
 
-        var done = false
-
-        while (!done && model_len < SEQUENCE_LENGTH - 1) {
+        // this really means len <= SEQ_LEN - 2 because the first element was already taken by __start__
+        while (model_len < SEQUENCE_LENGTH - 1) {
 
             model_len_buffer.putInt(0 * BYTES_PER_INT, model_len)
             tflite.runForMultipleInputsOutputs(interpreterInputs, outputMap)
-            //tflite.run(interpreterInputs, tokenOutputBuffer)
 
             val token: Int = tokenOutputBuffer
                 .get(0)
-            //.getInt(0 * BYTES_PER_INT)
-            print("token value: |$token|. model_len: $model_len\n")
+            //print("token value: |$token|. model_len: $model_len\n")
 
             if (token == END_TOKEN) { // this means __end__
-                done = true
                 break
             }
 
@@ -136,8 +132,8 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
 
         // convert modelTokens to string
         val outString = tokenizer.decode(modelTokens)
-        print("\n\n====================Output $modelTokens \n")
-        print(" values: \"$outString\" \n")
+        //print("\n\n====================Output $modelTokens \n")
+        //print(" values: \"$outString\" \n")
         return outString
     }
 
@@ -183,16 +179,22 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    private suspend fun loadBpeRanks():Map<Pair<String, String>, Int> = withContext(Dispatchers.IO) {
-        hashMapOf<Pair<String, String>, Int>().apply {
+    private suspend fun loadMerges():Map<String, List<String>> = withContext(Dispatchers.IO) {
+        hashMapOf<String, List<String>>().apply {
             val mergesStream = getApplication<Application>().assets.open(MERGES_PATH)
             mergesStream.use { stream ->
                 val mergesReader = BufferedReader(InputStreamReader(stream))
                 mergesReader.useLines { seq ->
                     seq.drop(1).forEachIndexed { i, s ->
                         val list = s.split(" ")
-                        val keyTuple = list[0] to list[1]
-                        put(keyTuple, i)
+                        val first = list[0]
+                        var second = list[1]
+                        if (second.length > WORD_CODE.length &&
+                            second.substring(second.length - WORD_CODE.length) == WORD_CODE) {
+                            second = second.substring(0, second.length - WORD_CODE.length)
+                        }
+                        //print(" merges list $list. $first $second\n")
+                        put(first+second, listOf(first, second))
                     }
                 }
             }
@@ -205,7 +207,7 @@ class ConversationViewModel(application: Application) : AndroidViewModel(applica
 
         // get AI's response
         val input1 = applicationModel.getTrailingStatements(4)
-        print("\n---------\n--> Feeding input: <$input1> to model ")
+        //print("\n---------\n--> Feeding input: <$input1> to model ")
         val output =  genorateResponse(input1)
 
         // add AI's response
