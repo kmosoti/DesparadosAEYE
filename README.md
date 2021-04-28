@@ -17,7 +17,7 @@ An open-domain conversation chatbot
 </td>
 
 <td>
-![Demonstration](https://raw.githubusercontent.com/JacobFV/DesparadosAEYE/main/content/images/demo.gif)
+<image src="https://raw.githubusercontent.com/JacobFV/DesparadosAEYE/main/content/images/demo.gif" />
 </td>
 
 </tr>
