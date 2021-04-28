@@ -2,12 +2,9 @@ apply plugin: 'de.undercouch.download'
 
 task downloadLiteModel {
     def downloadFiles = [
-            "https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-vocab.json": "gpt2-vocab.json",
-            "https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-merges.txt": "gpt2-merges.txt",
-            "https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-64-fp16.tflite": "model.tflite",     // FP16 quantization version
-//        "https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-64-8bits.tflite": "model.tflite",  // 8-bit integers version
-//        "https://s3.amazonaws.com/models.huggingface.co/bert/gpt2-64.tflite": "model.tflite",        // "raw" version
-//        "https://s3.amazonaws.com/models.huggingface.co/bert/distilgpt2-64.tflite": "model.tflite",  // Distilled version
+            "https://huggingface.co/facebook/blenderbot_small-90M/resolve/main/vocab.json": "blenderbot-vocab.json",
+            "https://huggingface.co/facebook/blenderbot_small-90M/resolve/main/merges.txt": "blenderbot-merges.txt",
+            "https://huggingface.co/jacob-valdez/blenderbot-small-tflite/resolve/main/blenderbot.tflite": "blenderbot.tflite",
     ]
     downloadFiles.each { key, value ->
         download {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,8 +26,7 @@ class ConversationFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        conversationViewModel =
-                ViewModelProvider(this).get(ConversationViewModel::class.java)
+        conversationViewModel = ViewModelProvider(this).get(ConversationViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_conversation, container, false)
         return root
     }

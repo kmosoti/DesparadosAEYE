@@ -18,25 +18,11 @@ class User(
     private var lastName: String,
     private var password: String,
 ) {
-    val COLSIZE: Int = com.example.desparadosaeye.ai.COLSIZE
-    val ROWSIZE: Int = com.example.desparadosaeye.ai.ROWSIZE
 
 //    init {
 //        generateMatrix()
 //        generateUserID()
 //    }
-    lateinit var matrix: Array<Array<Boolean>>
-
-    private fun generateMatrix()
-    {
-        for(i in matrix.indices)
-        {
-            for(j in matrix.indices)
-            {
-                setMatrix(i,j,false)
-            }
-        }
-    }
 
     fun save() {
         TODO("save everything, send to SQLLite and save Matrix ")
@@ -50,7 +36,6 @@ class User(
     fun getUserLastName(): String = this.lastName
     fun getUserEmail(): String = this.email
     fun getUserPassword(): String = this.password
-    fun getUserMatrix():Array<Array<Boolean>> = this.matrix
 
     /**
      * Setters
@@ -59,17 +44,6 @@ class User(
     fun setUserLastName(name:String){this.lastName=name}
     fun setEmail(mail:String){this.email=mail}
     fun setPassword(pass:String){this.password = pass}
-
-    /**
-     * Function for modifying the matrix
-     * @param rowIndex: Row to be modified
-     * @param colIndex : Column to be modified
-     * @param value: Value to be set in specified index
-     */
-    fun setMatrix(rowIndex: Int, colIndex: Int,value:Boolean)
-    {
-        matrix[rowIndex][colIndex] = value
-    }
 
     /**
      * @param email: User email to check registration with
