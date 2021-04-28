@@ -15,7 +15,7 @@
         tools:ignore="UselessParent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/loginLogoImageView"
             android:layout_width="141dp"
             android:layout_height="124dp"
             android:layout_gravity="center"
