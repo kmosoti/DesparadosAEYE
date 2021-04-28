@@ -22,10 +22,6 @@ class AccountManagementFragment : Fragment() {
         accountManagementViewModel =
                 ViewModelProvider(this).get(AccountManagementViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_account_management, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        accountManagementViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }

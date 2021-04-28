@@ -18,10 +18,6 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    aaptOptions {
-        noCompress "tflite"
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -32,21 +28,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    dataBinding {
-        enabled = true
-    }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
     buildFeatures {
         mlModelBinding true
     }
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
 }
-
-apply from: 'download.gradle'
 
 dependencies {
 

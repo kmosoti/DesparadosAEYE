@@ -60,7 +60,6 @@
                 android:layout_gravity="center"
                 android:text="@string/log_in_button"
                 android:layout_margin="@dimen/login_button_margin"
-                android:onClick="onLoginButtonPress"
                 tools:ignore="ButtonStyle" />
 
             <Button
