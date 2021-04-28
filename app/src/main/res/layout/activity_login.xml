@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:fadingEdge="horizontal|vertical"
             android:foreground="@drawable/rounded_fg"
-            app:srcCompat="@drawable/cowboy_logo"
+            app:srcCompat="@drawable/theme_icon"
             android:contentDescription="@string/nav_header_title" />
         <!-- Email Prompt Field-->
 
