@@ -1,17 +1,14 @@
 package com.example.desparadosaeye.ui.login
 
-import android.app.Activity
 import android.content.Intent
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
 import android.widget.Toast;
+import com.bumptech.glide.Glide
 
 import com.example.desparadosaeye.R
 import com.example.desparadosaeye.data.database.DataBaseHelper
@@ -26,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        // make animated eye
+        Glide.with(this).load(R.drawable.anim).into(
+            findViewById(R.id.loginLogoImageView))
+
         //Define Variables to be used for Account Processing
         val useremail = findViewById<EditText>(R.id.TextEmailAddress)
         val password = findViewById<EditText>(R.id.TextPassword)
