@@ -27,7 +27,8 @@ An open-domain conversation chatbot
  
  - [x] Basic user SQL server
  - [x] Simple (90MB) conversational AI 
+ - [x] add animated gif to login page
+ - [x] try switching to 400 MB or 1 GB AI's -- unsucessfully :(
  - [ ] remove unused views
- - [ ] add animated gif to login page
  - [ ] save messages even when app closes
- - [ ] try switching to 400 MB or 1 GB AI's
+ - [ ] send recovery email
