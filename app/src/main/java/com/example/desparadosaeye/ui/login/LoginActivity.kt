@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
 import android.widget.Toast;
-import com.bumptech.glide.Glide
+import com.bumptech.glide.Glide;
 
 import com.example.desparadosaeye.R
 import com.example.desparadosaeye.data.database.DataBaseHelper
