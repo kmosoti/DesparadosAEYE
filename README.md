@@ -32,3 +32,6 @@ An open-domain conversation chatbot
  - [ ] remove unused views
  - [ ] save messages even when app closes
  - [ ] send recovery email
+
+ ## How to Run This Application
+ Please fill this in
