@@ -22,6 +22,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_FIRSTNAME = "FIRSTNAME";
     public static final String COLUMN_LASTNAME = "LASTNAME";
     public static final String COLUMN_VALID = "VALID";
+    private final SQLiteDatabase db = this.getReadableDatabase();
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "users.db", null, 1);
@@ -46,7 +47,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addUser(User newLogin){
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_EMAILS, newLogin.getUserEmail());
@@ -59,18 +59,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean check_valid_user(User loginAttempt){
-        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + USERS_TABLE
                 + " WHERE " + COLUMN_EMAILS + " = '" + loginAttempt.getUserEmail() + "'"
                 + " AND " + COLUMN_PASSWORD + " = '" + loginAttempt.getUserPassword() + "'";
         @SuppressLint("Recycle")
         Cursor probe = db.rawQuery(query,null);
         Log.i("UserValidated", String.valueOf(probe.getCount()));
-        return probe.getCount() != 0;
+        boolean valid = probe.getCount() != 0;
+        probe.close();
+        return valid;
     }
 
     public boolean check_password(User loginAttempt, String passwordAttempt){
-        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM "+ USERS_TABLE
                        + " WHERE " + COLUMN_EMAILS + " = " + "'" +loginAttempt.getUserEmail()+ "'"
                        + " AND " + COLUMN_PASSWORD  + " = " + "'" +passwordAttempt+ "'" ;
@@ -84,13 +84,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean changeUser(String oldEmail, User userChanges) {
         // userChanges is a USER with NULL or empty attributes
         // except where changes (password, email, etc) will occur
-        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + USERS_TABLE +
                 " WHERE " + COLUMN_EMAILS + " = '" + oldEmail + "'";
 
         @SuppressLint("Recycle")
         Cursor probe = db.rawQuery(query, null);
-        if(probe.getCount() == 1) {
+        if(probe.getCount() >= 1) {
             probe.moveToFirst();
             User newUser = new User(userChanges);
             if (newUser.getUserEmail().trim().isEmpty()) {
@@ -105,8 +104,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             if (newUser.getUserLastName().trim().isEmpty()) {
                 newUser.setUserLastName(probe.getString(probe.getColumnIndex(COLUMN_LASTNAME)));
             }
+            probe.close();
+            Log.i("changeUser", "deleting");
             deleteUser(userChanges.getUserEmail());
-            return addUser(newUser);
+            Log.i("changeUser", "deleted. now adding");
+            addUser(newUser);
+            Log.i("changeUser", "added");
+            return true;
         }
         else {
             return false;
@@ -128,4 +132,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Log.i("Records deleted", String.valueOf(probe.getCount()));
         return probe.getCount() == 1;
     }
+
+    public void saveStatements()
 }

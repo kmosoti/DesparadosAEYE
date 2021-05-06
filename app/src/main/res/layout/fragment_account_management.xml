@@ -51,13 +51,28 @@
             tools:ignore="LabelFor" />
 
         <TextView
-            android:text="Updated Email"
+            android:text="Email"
             android:textAlignment="center"
             android:layout_height="match_parent"
             android:layout_width="match_parent" />
 
         <EditText
-            android:id="@+id/editTextUserEmail"
+            android:id="@+id/editTextOldUserEmail"
+            android:text=""
+            android:autofillHints=""
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            android:text="New Email (if you want to change it)"
+            android:textAlignment="center"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+        <EditText
+            android:id="@+id/editTextNewUserEmail"
             android:text=""
             android:autofillHints=""
             android:layout_height="match_parent"
@@ -93,6 +108,8 @@
             android:text="@string/delete_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_marginTop="24dp"
             android:layout_gravity="center_horizontal|bottom"/>
 
     </LinearLayout>
