@@ -34,4 +34,9 @@ An open-domain conversation chatbot
  - [ ] send recovery email
 
  ## How to Run This Application
- Please fill this in
+ ###### Android Studio Emulator
+ 1. `git clone` the project into *Android Studio* (VCS->git->Clone)
+ 2. Select **AVD Manager** and choose a phone with an API >= 30. Make sure to allocate extra resources as this is an intensive application
+ 3. **Build** (The hammer icon)
+ 4. Press the play button
+
