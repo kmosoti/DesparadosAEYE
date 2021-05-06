@@ -43,14 +43,9 @@
     <string name="message_deleted">message deleted</string>
     <string name="menu_account_setup">Account Setup</string>
     <string name="edit_personal_information">Edit Personal Information</string>
-    <string name="change_password_leave_blank_to_keep">Change Password (Leave blank to keep)</string>
+    <string name="change_password_string">New Password</string>
     <string name="save">Save</string>
     <string name="delete_account">Delete Account</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
 
 </resources>
