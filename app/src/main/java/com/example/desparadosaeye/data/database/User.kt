@@ -18,6 +18,7 @@ class User(
     private var lastName: String,
     private var password: String,
 ) {
+    constructor(user: User) : this(user.email, user.firstName, user.lastName, user.password)
 
 //    init {
 //        generateMatrix()

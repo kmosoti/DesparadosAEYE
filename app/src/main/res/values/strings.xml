@@ -47,5 +47,6 @@
     <string name="save">Save</string>
     <string name="delete_account">Delete Account</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="email">Email</string>
 
 </resources>
