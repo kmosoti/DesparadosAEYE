@@ -132,6 +132,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Log.i("Records deleted", String.valueOf(probe.getCount()));
         return probe.getCount() == 1;
     }
-
-    public void saveStatements()
 }
