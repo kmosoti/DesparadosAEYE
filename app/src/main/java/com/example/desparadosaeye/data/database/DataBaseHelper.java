@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 
+import com.example.desparadosaeye.data.database.User;
+
 
 import androidx.annotation.Nullable;
 
@@ -46,12 +48,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_LASTNAME, newLogin.getUserLastName());
 
         long insert = db.insert(USERS_TABLE,null,cv);
-        if(insert == -1){
-            return false;
-        }
-        else {
-            return true;
-        }
+        return insert != -1;
     }
 
     public boolean check_valid_user(User loginAttempt){
@@ -59,24 +56,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM "+USERS_TABLE + " WHERE " + COLUMN_EMAILS + " = " + "'" +loginAttempt.getUserEmail()+ "'";
         Cursor probe = db.rawQuery(query,null);
 
-        if(probe.getCount() == 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return probe.getCount() != 0;
     }
     public boolean check_password(User loginAttempt, String passwordAttempt){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM "+ USERS_TABLE +
                        " WHERE " + COLUMN_EMAILS + " = " + "'" +loginAttempt.getUserEmail()+ "'" +
-                       "AND"+ COLUMN_PASSWORD  + " = " + "'" +passwordAttempt+ "'" ;
+                       "AND "+ COLUMN_PASSWORD  + " = " + "'" +passwordAttempt+ "'" ;
         Cursor probe = db.rawQuery(query,null);
-        if(probe.getCount() == 0){
-            return false;
-        }
-        else{
-            return true;
-        }
+        return probe.getCount() != 0;
+    }
+
+    public boolean change_password(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("UPDATE "+USERS_TABLE+" SET "+COLUMN_PASSWORD+" = '"+password+"' WHERE "+COLUMN_EMAILS+" = '"+email+"'");
+        User verifyAttempt = new User(email,"","",password);
+        boolean isValid = check_password(verifyAttempt, password);
+        return isValid;
     }
 }
