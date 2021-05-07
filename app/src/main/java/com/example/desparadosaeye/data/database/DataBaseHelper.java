@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.example.desparadosaeye.data.database.User;
+
 
 import androidx.annotation.Nullable;
 
@@ -131,5 +133,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor probe = db.rawQuery(query, null);
         Log.i("Records deleted", String.valueOf(probe.getCount()));
         return probe.getCount() == 1;
+    }
+
+    public boolean change_password(String email, String password){
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.execSQL("UPDATE "+USERS_TABLE+" SET "+COLUMN_PASSWORD+" = '"+password+"' WHERE "+COLUMN_EMAILS+" = '"+email+"'");
+        User verifyAttempt = new User(email,"","",password);
+        boolean isValid = check_password(verifyAttempt, password);
+        return isValid;
     }
 }

@@ -32,3 +32,12 @@ An open-domain conversation chatbot
  - [ ] remove unused views
  - [ ] save messages even when app closes
  - [ ] send recovery email
+
+ ## How to Run This Application
+ ###### Android Studio
+ 1. `git clone` the project into *Android Studio* (VCS->git->Clone)
+ 2. (**NOT Recommended**) Select **AVD Manager** and choose a phone with an API >= 30. Make sure to allocate extra resources as this is an intensive application
+ 3. (**Recommended**) Use a real Anroid device. Follow [This Link](https://developer.android.com/training/basics/firstapp/running-app) for more information.
+ 4. **Build** (The hammer icon)
+ 5. Press the play button
+

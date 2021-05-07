@@ -25,6 +25,7 @@
             android:contentDescription="@string/nav_header_title" />
         <!-- Email Prompt Field-->
 
+
         <EditText
             android:id="@+id/TextEmailAddress"
             android:layout_width="wrap_content"
@@ -61,45 +62,36 @@
                 android:text="@string/log_in_button"
                 android:layout_margin="@dimen/login_button_margin"
                 tools:ignore="ButtonStyle" />
-
-            <Button
-                android:id="@+id/buttonCreateAccount"
-                android:layout_width="@dimen/login_button"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/sign_up_button"
-                android:layout_margin="@dimen/login_button_margin"
-                tools:ignore="ButtonStyle" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_margin="@dimen/auth_provider_button_margin">
+            android:layout_width="411dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center|center_horizontal|center_vertical"
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/imageButtonGoogle"
-                android:layout_width="@dimen/auth_provider_button_size"
-                android:layout_height="@dimen/auth_provider_button_size"
+            <TextView
+                android:id="@+id/TextViewCreateAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:foreground="@drawable/rounded_fg"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/google_image"
-                android:layout_margin="@dimen/auth_provider_button_margin"
-                android:contentDescription="@string/sign_in_with_google_button" />
+                android:layout_margin="@dimen/login_button_margin"
+                android:text="@string/sign_up_button"
+                android:translationX="120dp"
+                tools:ignore="ButtonStyle" />
 
-            <ImageButton
-                android:id="@+id/imageButtonFacebook"
-                android:layout_width="@dimen/auth_provider_button_size"
-                android:layout_height="@dimen/auth_provider_button_size"
+            <TextView
+                android:id="@+id/forgot_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:foreground="@drawable/rounded_fg"
-                android:scaleType="fitXY"
-                app:srcCompat="@drawable/facebook_image"
-                android:layout_margin="@dimen/auth_provider_button_margin"
-                android:contentDescription="@string/sign_in_with_facebook_button" />
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/forgot_password"
+                android:translationX="120dp" />
+
+
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
