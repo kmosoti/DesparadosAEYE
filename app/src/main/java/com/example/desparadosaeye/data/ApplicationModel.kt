@@ -15,6 +15,12 @@ class ApplicationModel {
     val statements = arrayListOf<Statement>().toMutableList()
     var conversationViewModel: ConversationViewModel? = null
 
+    init {
+        // TODO(somehow load `statements` from database)
+    }
+
+    
+
     @SuppressLint("SimpleDateFormat")
     fun addStatement(origin: StatementOrigin, content: String) {
 
